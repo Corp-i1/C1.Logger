@@ -29,7 +29,7 @@ Alternatively, search for "C1Log" in the NuGet Package Manager in Visual Studio 
 
 ## Usage
 
-For a full usage guide, please refer to the [Docs](https://docs.corpi1.uk/C1Log/Introduction)
+For a full usage guide, please refer to the [Docs](https://docs.corpi1.uk/C1Logger/Introduction)
 
 **Log Levels:**
 - Emergency (`emerg`)
