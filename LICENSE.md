@@ -25,7 +25,7 @@ Software by Corpi1 (https://corpi1.uk)
 ```
 OR
 ```
-Software by Corpi1 (https://github.com/Corp-i1/C1Logger)
+Software by Corpi1 (https://github.com/Corp-i1/C1.Logger)
 ```
 
 ### 4. No Resale or Monetization of the Software

@@ -1,4 +1,4 @@
-﻿# C1Log
+﻿# C1Logger
 
 ### My Website: [Corpi1.uk](https://Corpi1.uk)
 
@@ -14,12 +14,12 @@ To use this library, install it via NuGet in your project. You can do this by ru
 Latest Version:
 
 ```bash
-NuGet\Install-Package C1Log
+NuGet\Install-Package C1.Logger
 ```
 
 Specific Version:
 ```bash
-NuGet\Install-Package C1Log --Version x.x.x
+NuGet\Install-Package C1.Logger --Version x.x.x
 ```
 
 
@@ -45,7 +45,7 @@ For a full usage guide, please refer to the [Docs](https://docs.corpi1.uk/C1Logg
 
 Default initialization with default settings:
 ```csharp
-using C1Log;
+using C1Logger;
 C1Log.InitLog(); // Initialize with default settings
 C1Log.Info("Application started.");
 C1Log.Flush(); // Ensure all logs are written
@@ -53,7 +53,7 @@ C1Log.Flush(); // Ensure all logs are written
 
 Customizing the log directory, log level and format:
 ```csharp
-using C1Log;
+using C1Logger;
 C1Log.InitLog(
         new C1LogConfig { 
             LogDirectory = @"C:\Logs", // Specify your log directory
@@ -69,7 +69,7 @@ C1Log.Flush(); // Ensure all logs are written
 **Full API Example:**
 ```csharp
 using System;
-using C1Log;
+using C1Loger;
 public class MyCustomSink : C1Log.ILogSink { 
 public void Write(string message, C1Log.LogLevel level) 
 

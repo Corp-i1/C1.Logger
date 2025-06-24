@@ -8,11 +8,11 @@
     <Title>C1Logger</Title>
     <Authors>Corp_i1</Authors>
     <Company>Corp_i1</Company>
-    <Description>C1Log is a modern, thread-safe, and highly configurable logging library for .NET applications.
+    <Description>C1Logger is a modern, thread-safe, and highly configurable logging library for .NET applications.
 It supports asynchronous logging, log file rolling (by date and size), minimum log level filtering, and custom log sinks for advanced scenarios.
-C1Log is easy to integrate, with flexible configuration via static properties or a configuration object, and supports syslog-style log levels with both full and shorthand names.</Description>
-    <PackageProjectUrl>Corpi1.uk</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Corp-i1/C1Log</RepositoryUrl>
+C1Logger is easy to integrate, with flexible configuration via static properties or a configuration object, and supports syslog-style log levels with both full and shorthand names.</Description>
+    <PackageProjectUrl>https://corpi1.uk/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Corp-i1/C1.Logger</RepositoryUrl>
     <PackageReleaseNotes>Initial</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
@@ -21,8 +21,10 @@ C1Log is easy to integrate, with flexible configuration via static properties or
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageIcon>{C1} Teal 256x256 lv9 .png</PackageIcon>
     <SignAssembly>True</SignAssembly>
-    <Version>1.0.0</Version>
-    <PackageId>C1Logger</PackageId>
+    <Version>1.0.1</Version>
+    <PackageId>C1.Logger</PackageId>
+    <IncludeSymbols>True</IncludeSymbols>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0|AnyCPU'">
