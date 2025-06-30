@@ -44,20 +44,15 @@ namespace C1Logger
         /// </summary>
         public static string LogDirectory
         {
-            get
-            {
-                if (_logDirectory == null)
-                {
-                    _logDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
-                }
-                return _logDirectory;
-            }
+            get => _logDirectory ??= Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
             set
             {
                 lock (_lock)
                 {
+                    if (_initialized)
+                        throw new InvalidOperationException("Cannot change LogDirectory after logging has started.");
                     _logDirectory = value;
-                    _logFilePath = null; // Reset so it will be regenerated
+                    _logFilePath = null;
                 }
             }
         }
@@ -111,6 +106,7 @@ namespace C1Logger
         /// <summary>
         /// Initializes the logger with default settings.
         /// </summary>
+        [Obsolete("Manual initialization is no longer required. Configuration should be set before the first log call.")]
         public static void InitLog()
         {
             if (_initialized) return;

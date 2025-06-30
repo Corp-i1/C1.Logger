@@ -21,7 +21,7 @@ C1Logger is easy to integrate, with flexible configuration via static properties
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageIcon>{C1} Teal 256x256 lv9 .png</PackageIcon>
     <SignAssembly>True</SignAssembly>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <PackageId>C1.Logger</PackageId>
     <IncludeSymbols>True</IncludeSymbols>
     <AnalysisLevel>latest-recommended</AnalysisLevel>

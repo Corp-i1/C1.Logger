@@ -31,6 +31,10 @@ Alternatively, search for "C1Log" in the NuGet Package Manager in Visual Studio 
 
 For a full usage guide, please refer to the [Docs](https://docs.corpi1.uk/C1Logger/Introduction)
 
+> **Note:**  
+> C1Log is fully self-initializing. You do **not** need to call any initialization method.  
+> If you want to customize configuration (log directory, minimum log level, formatter, etc.), set those properties **before** your first log call.
+
 **Log Levels:**
 - Emergency (`emerg`)
 - Alert (`alert`)
@@ -43,48 +47,45 @@ For a full usage guide, please refer to the [Docs](https://docs.corpi1.uk/C1Logg
 
 **Basic Examples:**
 
-Default initialization with default settings:
+Default usage with default settings:
 ```csharp
-using C1Logger;
-C1Log.InitLog(); // Initialize with default settings
-C1Log.Info("Application started.");
+using C1Logger; 
+C1Log.Info("Application started."); 
 C1Log.Flush(); // Ensure all logs are written
+
 ```
 
 Customizing the log directory, log level and format:
 ```csharp
-using C1Logger;
-C1Log.InitLog(
-        new C1LogConfig { 
-            LogDirectory = @"C:\Logs", // Specify your log directory
-            MinLogLevel = C1Log.LogLevel.Warning, // Set minimum log level to Warning
-            Formatter = (dt, lvl, msg) => $"[{lvl.ShortHand()}] {dt:HH:mm:ss} - {msg}" // Custom log message to use shorthand
-        }
-    );
-C1Log.Info("Application started.");
-C1Log.Error("An error occurred.");
+using C1Logger; 
+C1Log.LogDirectory = @"C:\Logs"; // Specify your log directory 
+C1Log.MinLogLevel = C1Log.LogLevel.Warning; // Set minimum log level to Warning 
+C1Log.Formatter = (dt, lvl, msg) => $"[{lvl.ShortHand()}] {dt:HH:mm:ss} - {msg}"; // Custom log message to use shorthand
+C1Log.Info("Application started."); 
+C1Log.Error("An error occurred."); 
 C1Log.Flush(); // Ensure all logs are written
 ```
 
 **Full API Example:**
 ```csharp
-using System;
-using C1Loger;
-public class MyCustomSink : C1Log.ILogSink { 
-public void Write(string message, C1Log.LogLevel level) 
-
-class Program { static void Main() 
-    { 
-        // Configure logger 
-        var config = new C1LogConfig { 
-            = @"C:\Logs", 
-            MinLogLevel = C1Log.LogLevel.Notice, 
-            Formatter = (dt, lvl, msg) => $"[{lvl.ShortHand()}] {dt:HH:mm:ss} - {msg}" 
-            C1LogConfig.Sinks.Add(new MyCustomSink());
-        }; 
-
-        C1Log.InitLog(config);
-
+using System; 
+using C1Logger;
+public class MyCustomSink : C1Log.ILogSink {
+    public C1Log.LogLevel MinLogLevel => C1Log.LogLevel.Notice; 
+    public void Dispose() { } 
+    public Task WriteAsync(string message, 
+    C1Log.LogLevel level, IDictionary<string, object> context = null) {
+        // Custom sink logic here 
+        return Task.CompletedTask; 
+        } 
+    }
+class Program { 
+    static void Main() { 
+        // Configure logger before first log
+        C1Log.LogDirectory = @"C:\Logs"; 
+        C1Log.MinLogLevel = C1Log.LogLevel.Notice; 
+        C1Log.Formatter = (dt, lvl, msg) => $"[{lvl.ShortHand()}] {dt:HH:mm:ss} - {msg}"; 
+        C1Log.AddSink(new MyCustomSink());
         // Subscribe to logging failures
         C1Log.OnLoggingFailure += ex => Console.Error.WriteLine($"Logging failed: {ex}");
 
@@ -94,7 +95,6 @@ class Program { static void Main()
         C1Log.Error("Error message.");
         C1Log.Exception(new Exception("Test exception"));
         C1Log.Flush(); // Ensure all logs are written
-
     }
 }
 ```
